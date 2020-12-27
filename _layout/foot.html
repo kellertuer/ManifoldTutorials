@@ -1,0 +1,11 @@
+    </div> <!-- end of class=container (from head) -->
+    {{ if hasmath }}
+        {{ insert foot_katex.html }}
+    {{ end }}
+    {{ if hascode }}
+        {{ insert foot_highlight.html }}
+    {{ end }}
+    <script src="/libs/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="/libs/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>
