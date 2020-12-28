@@ -2,13 +2,13 @@ using Dates
 """
     {{addTab "Name" "file.md" "altText" "div-class"}}
 """
-function hfun_addTab(params::Vector{String}=String[])
+function hfun_addtab(params)
     name = params[1]
     file = params[2]
     ext = file[findlast(isequal('.'),file):end]
     altText = length(params) > 2 ? params[3] : ""
     div_class = length(params) > 3 ? params[4] : ""
-    content
+    content = ""
     if isfile(file)
         if lowercase(ext) == ".md"
             conent = fd2html(read(file, String); internal=true)
@@ -19,23 +19,25 @@ function hfun_addTab(params::Vector{String}=String[])
             (lowercase(ext) == ".m") && (code_type="matlab")
             (lowercase(ext) == ".c") && (code_type="c")
             (lowercase(ext) == ".cpp") && (code_type="cpp")
-            content = fd2html("""```$(code_type)
+            content = """<code class="hightlight-$(code_type)">
                 $(read(file, String))
-                ```""")
+                </code>"""
         end
     else
-        conent = fd2html(altText; internal=true)
-    end
+       conent = fd2html(altText; internal=true)
+   end
     entry = Dict("Content" => content, "Name" => name, "Class"=>div_class)
-    if isnothing(locvar("manifolds_tabs"))
+    if isnothing(locvar("manifold_tabs"))
         Franklin.LOCAL_VARS["manifold_tabs"] = Franklin.dpair([entry])
     else
         manifold_tabs = Franklin.locvar("manifold_tabs")
         push!(manifold_tabs, entry)
         Franklin.set_var!(Franklin.LOCAL_VARS, "manifold_tabs", manifold_tabs)
     end
+    return ""
 end
-function hfun_printTabs()
+
+function hfun_printtabs()
     manifold_tabs = Franklin.locvar("manifold_tabs")
     heads = "";
     # heads
@@ -43,8 +45,8 @@ function hfun_printTabs()
     for entry in manifold_tabs
         class_entry = get(entry,"Class","")
         heads = """$heads
-            <li class="nav item">
-                <a class="nav-link $(first ? "active" : "") $(class_entry)" data-toggle="tab" href="#$(entry["Name"])">$(entry["name"])</a>
+            <li class="nav item$(first ? " active" : "")">
+                <a data-toggle="tab" href="#$(entry["Name"])Code">$(entry["Name"])</a>
             </li>
             """
         first = false
@@ -58,8 +60,8 @@ function hfun_printTabs()
     for entry in manifold_tabs
         class_entry = get(entry,"Class","")
         tabs = """$(tabs)
-        <div class="tab-pane fade $(first ? "active show" : "") $(class_entry)" id="home">
-
+        <div class="tab-pane fade$(first ? " in active" : "")$(class_entry)" id="$(entry["Name"])Code">
+            $(entry["Content"])
         </div>
         """
         first = false
@@ -74,4 +76,5 @@ function hfun_printTabs()
         $(heads)
         $(tabs)
         </div>"""
+    return ""
 end
