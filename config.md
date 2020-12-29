@@ -27,3 +27,13 @@ For instance:
 -->
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\transp}{\mathrm{T}}
+
+\newcommand{\bootstrapbox}[2]{
+~~~
+<div class="alert alert-dismissible alert-primary">
+  <strong>#1</strong>#2
+</div>
+~~~
+}

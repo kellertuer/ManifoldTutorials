@@ -1,14 +1,14 @@
-/* Base16 Atelier Forest Dark - Theme */
-/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest) */
+/* Base16 Atelier Seaside Light - Theme */
+/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside) */
 /* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
 
-/* Atelier-Forest Comment */
+/* Atelier-Seaside Comment */
 .hljs-comment,
 .hljs-quote {
-  color: #9c9491;
+  color: #687d68;
 }
 
-/* Atelier-Forest Red */
+/* Atelier-Seaside Red */
 .hljs-variable,
 .hljs-template-variable,
 .hljs-attribute,
@@ -19,10 +19,10 @@
 .hljs-name,
 .hljs-selector-id,
 .hljs-selector-class {
-  color: #f22c40;
+  color: #e6193c;
 }
 
-/* Atelier-Forest Orange */
+/* Atelier-Seaside Orange */
 .hljs-number,
 .hljs-meta,
 .hljs-built_in,
@@ -30,33 +30,33 @@
 .hljs-literal,
 .hljs-type,
 .hljs-params {
-  color: #df5320;
+  color: #87711d;
 }
 
-/* Atelier-Forest Green */
+/* Atelier-Seaside Green */
 .hljs-string,
 .hljs-symbol,
 .hljs-bullet {
-  color: #7b9726;
+  color: #29a329;
 }
 
-/* Atelier-Forest Blue */
+/* Atelier-Seaside Blue */
 .hljs-title,
 .hljs-section {
-  color: #407ee7;
+  color: #3d62f5;
 }
 
-/* Atelier-Forest Purple */
+/* Atelier-Seaside Purple */
 .hljs-keyword,
 .hljs-selector-tag {
-  color: #6666ea;
+  color: #ad2bee;
 }
 
 .hljs {
   display: block;
   overflow-x: auto;
-  background: #1b1918;
-  color: #a8a19f;
+  background: #f8f9fa;
+  color: #5e6e5e;
   padding: 0.5em;
 }
 

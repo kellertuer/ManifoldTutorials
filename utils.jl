@@ -1,12 +1,12 @@
 using Dates
 """
-    {{addTab "Name" "file.md" "altText" "label"}}
+    {{addTab "Name" "file.md" "icon" "label"}}
 """
 function hfun_addtab(params)
     name = params[1]
     file = params[2]
     ext = file[findlast(isequal('.'),file):end]
-    altText = length(params) > 2 ? params[3] : ""
+    icon = length(params) > 2 ? params[3] : ""
     label = length(params) > 3 ? params[4] : name
     content = ""
     if isfile(file)
@@ -19,14 +19,14 @@ function hfun_addtab(params)
             (lowercase(ext) == ".m") && (code_type="matlab")
             (lowercase(ext) == ".c") && (code_type="c")
             (lowercase(ext) == ".cpp") && (code_type="cpp")
-            content = """<code class="hightlight-$(code_type)">
+            content = """<pre><code class="hightlight-$(code_type)">
                 $(read(file, String))
-                </code>"""
+                </code></pre>"""
         end
     else
-       conent = fd2html(altText; internal=true)
+        @warn "Entry $(file) ignored, since the file seems to be missing"
    end
-    entry = Dict("Content" => content, "Name" => name, "Label" => label)
+    entry = Dict("Content" => content, "Name" => name, "Label" => label, "Icon" => icon)
     if isnothing(locvar("manifold_tabs"))
         Franklin.LOCAL_VARS["manifold_tabs"] = Franklin.dpair([entry])
     else
@@ -51,9 +51,12 @@ function hfun_printtabs()
     first = true;
     for entry in manifold_tabs
         class_entry = get(entry,"Class","")
+        icon_html = get(entry,"Icon", "") == 0 ? "" : """<img class='icon' src='assets/icons/$(entry["Icon"]).png'/>"""
         heads = """$heads
             <li class="nav-item">
-                <a class="nav-link$(first ? " active" : "")" data-toggle="tab" href="#$(entry["Label"])$(num)" aria-selected="$(first)">$(entry["Name"])</a>
+                <a class="nav-link$(first ? " active" : "")" data-toggle="tab" href="#$(entry["Label"])$(num)" aria-selected="$(first)">
+                $(icon_html)$(entry["Name"])
+                </a>
             </li>
             """
         first = false
