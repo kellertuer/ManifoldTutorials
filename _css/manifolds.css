@@ -5,16 +5,12 @@
 .page-foot {
     text-align: center;
 }
-div code.hljs,
-p code.hljs
-{
-    display: inline;
-    padding: .2em
-}
-div.alert > code.hljs {
+div.alert > code {
     background: inherit;
+    color: inherit;
+    font-family: monospace;
+    font-size:1.1rem;
 }
-
 .text-to-code {
 }
 
