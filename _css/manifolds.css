@@ -1,0 +1,12 @@
+.icon {
+    width: 1.5rem;
+    margin-right:.5rem;
+}
+.page-foot {
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+}
+code {
+    white-space: pre-wrap;
+}

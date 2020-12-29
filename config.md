@@ -4,11 +4,11 @@ Add here global page variables to use throughout your
 website.
 The website_* must be defined for the RSS to work
 -->
-@def website_title = "Franklin Template"
-@def website_descr = "Example website using Franklin"
-@def website_url   = "https://tlienart.github.io/FranklinTemplates.jl/"
+@def website_title = "Manifold Tutorials"
+@def website_descr = "Examples for numerical methods involving manifold"
+@def website_url   = "https://kellertuer.github.io/ManifoldTemplates/"
 
-@def author = "Septimia Zenobia"
+@def author = "Ronny Bergmann"
 
 @def mintoclevel = 2
 
