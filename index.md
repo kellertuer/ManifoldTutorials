@@ -1,6 +1,6 @@
 @def title = "Manifolds Manifolds!"
 
-{{startcolumns}}
+{{startcolumns "text-to-code"}}
 This is to explain some code
 {{newcolumn}}
   {{addtab "<img class='icon' src='assets/icons/julia_src.png'/>Manopt.jl" "_code/welcome.jl" "" "Julia"}}

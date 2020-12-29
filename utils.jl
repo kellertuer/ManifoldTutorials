@@ -86,16 +86,20 @@ function hfun_printtabs()
     return ""
 end
 
-function hfun_startcolumns()
+function hfun_startcolumns(params)
+    col_class = length(params) > 0 ? params[1] : ""
     return """<div class="row">
-    <div class="col-sm">
+    <div class="col-sm$(length(col_class)>0 ? " " : "")$(col_class)">
     """
 end
-function hfun_newcolumn()
+hfun_startcolumns() = hfun_startcolumns([""])
+function hfun_newcolumn(params)
+    col_class = length(params) > 0 ? params[1] : ""
     return """</div>
-    <div class="col-sm">
+    <div class="col-sm$(length(col_class)>0 ? " " : "")$(col_class)">
     """
 end
+hfun_newcolumn() = hfun_newcolumn([""])
 function hfun_endcolumns()
     return """</div>
     </div>
