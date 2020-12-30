@@ -1,0 +1,4 @@
+Sitemap: https://kellertuer.github.io/ManifoldTemplates/sitemap.xml
+
+User-agent: *
+Disallow:
