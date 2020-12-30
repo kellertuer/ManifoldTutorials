@@ -6,7 +6,7 @@ The website_* must be defined for the RSS to work
 -->
 @def website_title = "Manifold Tutorials"
 @def website_descr = "Examples for numerical methods involving manifold"
-@def website_url   = "https://kellertuer.github.io/ManifoldTemplates/"
+@def website_url   = "https://ronnybergmann.net/ManifoldTutorials/"
 
 @def author = "Ronny Bergmann"
 
