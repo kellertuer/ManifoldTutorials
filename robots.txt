@@ -1,4 +1,4 @@
-Sitemap: https://kellertuer.github.io/ManifoldTemplates/sitemap.xml
+Sitemap: https://ronnybergmann.net/ManifoldTutorials/sitemap.xml
 
 User-agent: *
 Disallow:
