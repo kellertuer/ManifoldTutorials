@@ -28,15 +28,15 @@ A remedy is, to restrict the function $f$ to all unit vectors, or in other words
 \[
   \mathbb S^{n-1} := \bigl\{x\in\R^n \big| \lVert x \rVert = 1 \bigr\}
 \]
-of dimension $n=1$. The code on the left now formulates the cost function and its gradient
+of dimension $n$. The code on the left now formulates the cost function and its gradient
 on this Riemannian manifold in order to perform a Riemannian [Quasi Newton](https://en.wikipedia.org/wiki/Quasi-Newton_method) method.
 
-\bootstrapbox{Note}{In <code class="plaintext">Manopt.jl</code> the example is written using the Riemannian gradient. In <code class="plaintext">Manopt</code> the Euclidean gradient, that is the on in the embedding of the sphere, is provided and internally converted via projection to the Riemannian one.}
+\bootstrapbox{Note}{In <code class="plaintext">Manopt.jl</code> the example is written using the Riemannian gradient. In <code class="plaintext">Manopt</code> the Euclidean gradient, that is the gradient in the embedding of the sphere, is provided and internally converted via projection to the Riemannian one.}
 
 {{newcolumn}}
   {{addtab "Manopt.jl" "_code/rayleigh.jl" "julia_src" "Julia"}}
   {{addtab "Manopt" "_code/rayleigh.m" "matlab_src" "Matlab"}}
-  {{addtab "Pymanopt" "_code/rayleigh_pymanopt.py" "python_src" "Pymanot"}}
+  {{addtab "Pymanopt" "_code/rayleigh_pymanopt.py" "python_src" "Pymanopt"}}
   {{addtab "GeomStats" "_code/rayleigh_geomstats.py" "python_src" "Geomstats}}
   {{printtabs}}
 {{endcolumns}}
