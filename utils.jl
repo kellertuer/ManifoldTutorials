@@ -9,7 +9,10 @@ function hfun_tabbed(params)
         """
     md_file = string("_code/$(file_prefix).md")
     if isfile(md_file)
-        html = """$(html)\n~~~\n$(read(md_file, String))\n~~~\n"""
+        html = """
+               $(html)
+               $(fd2html(read(md_file, String); internal=true))
+               """
     end
     html = """
            $(html)
@@ -42,7 +45,6 @@ function hfun_tabbed(params)
         </div>
         </div><!-- end row -->
         </div><!-- end rows -->
-        ~~~
         """
     return html
 end
