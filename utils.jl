@@ -7,10 +7,8 @@ function hfun_tabbed(params)
     <div class="col-sm">
     """
     md_file = string("_code/$(file_prefix).md")
-    println(md_file, " | ", isfile(md_file))
     if isfile(md_file)
-        print(fd2html(read(md_file, String); internal=true))
-        html = """$(html)\n$(fd2html(read(md_file, String); internal=true))"""
+        html = """$(html)\n$(Franklin.md2html(read(md_file, String); stripp=true))"""
     end
     html = """$(html)\n</div><!--end md column -->
     """
