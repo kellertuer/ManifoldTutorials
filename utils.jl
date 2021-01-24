@@ -9,10 +9,7 @@ function hfun_tabbed(params)
         """
     md_file = string("_code/$(file_prefix).md")
     if isfile(md_file)
-        html = """
-               $(html)
-               $(Franklin.fd2html(read(md_file, String); internal=true))
-               """
+        html = """$(html)\n~~~\n$(read(md_file, String))\n~~~\n"""
     end
     html = """
            $(html)
@@ -45,6 +42,7 @@ function hfun_tabbed(params)
         </div>
         </div><!-- end row -->
         </div><!-- end rows -->
+        ~~~
         """
     return html
 end
@@ -65,9 +63,11 @@ function code_column(file, logos=String[], text="", subfolder="")
     content = "";
     if isfile(full_file)
         content = """<div class="tab-pane fade" id="$(pre)$(ext)" role="tabpanel">
-            <pre><code class="hightlight-$(code_type)">
+            ~~~
+            ```$(code_type)
             $(read(full_file, String))
-            </code></pre>
+            ```
+            ~~~
             </div>
             """
         logos = string(["""<img class='icon' src='../assets/icons/$(logo).png' alt='$(logo)'/>""" for logo in logos]...)
