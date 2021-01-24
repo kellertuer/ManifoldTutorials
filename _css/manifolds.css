@@ -1,5 +1,5 @@
 .icon {
-    width: 1.5rem;
+    width: 1.25rem;
     margin-right:.5rem;
 }
 .page-foot {
@@ -12,6 +12,13 @@ div.alert > code {
     font-size:1.1rem;
 }
 .text-to-code {
+}
+
+div.tab-pane {
+    margin-top: -4px;
+    border-color: #dee2e6;
+    border:0px;
+    border-top: 1px;
 }
 
 ul.nav-tabs li.nav-item a.active {

@@ -1,9 +1,9 @@
-@def title = "Manifolds Manifolds!"
+@def title = "Manifold Tutorials"
 
 {{startcolumns "text-to-code"}}
 ## The Rayleigh Quotient
 
-For a symmetric matrix, i.e. $A\in \R^{n\times n}, A = A^\transp$, the Rayleigh quotient is defined as
+For a symmetric matrix, i.e. $A∈\R^{n\times n}, A = A^\transp$, the Rayleigh quotient is defined as
 
 \[
   f(x) = \frac{x^\transp A x}{\lVert x \rVert^2}.
