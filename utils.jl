@@ -9,10 +9,7 @@ function hfun_tabbed(params)
         """
     md_file = string("_code/$(file_prefix).md")
     if isfile(md_file)
-        html = """
-               $(html)
-               $(Franklin.fd2html(read(md_file, String); internal=true))
-               """
+        html = """$(html)\n~~~\n$(read(md_file, String))\n~~~\n"""
     end
     html = """
            $(html)
@@ -22,17 +19,19 @@ function hfun_tabbed(params)
     heads = ""
     tabs = ""
     for (file, logos) in [
-        ("$(file_prefix).jl", ["manopt_src","julia_src"]),
-        ("$(file_prefix).m", ["manopt_src","matlab_src"]),
-        ("$(file_prefix).py", ["manopt_src","python_src"]),
-        ("$(file_prefix)_pt.py", ["manopt_src","python_src", "pytorch_src"]),
-        ("$(file_prefix)_tf.py", ["manopt_src","python_src", "tensorflow_src"]),
+        ("$(file_prefix).jl", ["julia_src"]),
+        ("$(file_prefix).m", ["matlab_src"]),
+        ("$(file_prefix).py", ["python_src"]),
+        ("$(file_prefix)_pt.py", ["python_src", "pytorch_src"]),
+        ("$(file_prefix)_tf.py", ["python_src", "tensorflow_src"]),
     ]
         t, c = code_column(file, logos)
         heads = "$(heads)\n$(t)"
         tabs = "$(tabs)\n$(c)"
     end
     html = """$html
+        ~~~
+        <div class="col-sm">
         <div class="bs-component">
         <ul class="nav nav-tabs" id="ManifoldTab$(file_prefix)" role="tablist">
         $(heads)
@@ -41,7 +40,9 @@ function hfun_tabbed(params)
         $(tabs)
         </div>
         </div>
+        </div><!-- end row -->
         </div><!-- end rows -->
+        ~~~
         """
     return html
 end
@@ -62,9 +63,11 @@ function code_column(file, logos=String[], text="", subfolder="")
     content = "";
     if isfile(full_file)
         content = """<div class="tab-pane fade" id="$(pre)$(ext)" role="tabpanel">
-            <pre><code class="hightlight-$(code_type)">
+            ~~~
+            ```$(code_type)
             $(read(full_file, String))
-            </code></pre>
+            ```
+            ~~~
             </div>
             """
         logos = string(["""<img class='icon' src='../assets/icons/$(logo).png' alt='$(logo)'/>""" for logo in logos]...)
