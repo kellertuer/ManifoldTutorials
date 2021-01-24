@@ -33,7 +33,6 @@ function hfun_tabbed(params)
         tabs = "$(tabs)\n$(c)"
     end
     html = """$html
-        ~~~
         <div class="col-sm">
         <div class="bs-component">
         <ul class="nav nav-tabs" id="ManifoldTab$(file_prefix)" role="tablist">
@@ -64,14 +63,13 @@ function code_column(file, logos=String[], text="", subfolder="")
     (lowercase(ext) == "cpp") && (code_type="cpp")
     content = "";
     if isfile(full_file)
-        content = """<div class="tab-pane fade" id="$(pre)$(ext)" role="tabpanel">
-            ~~~
-            ```$(code_type)
-            $(read(full_file, String))
-            ```
-            ~~~
-            </div>
-            """
+        content = """<div class="tab-pane fade" id="$(pre)$(ext)" role="tabpanel">""" *
+                  fd2html("""
+                         ```$(code_type)
+                         $(read(full_file, String))
+                         ```
+                         """, internal=true) *
+                "</div>"
         logos = string(["""<img class='icon' src='../assets/icons/$(logo).png' alt='$(logo)'/>""" for logo in logos]...)
         tab = """<li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#$(pre)$(ext)" aria-selected="false">
