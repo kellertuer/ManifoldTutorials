@@ -25,14 +25,17 @@ This can easily be seen by observing that any $a\cdot x$, with a positive $a>0$ 
 
 
 A remedy is, to restrict the function $f$ to all unit vectors, or in other words the unit sphere
+
 \[
   \mathbb S^{n-1} := \bigl\{x\in\R^n \big| \lVert x \rVert = 1 \bigr\}
 \]
+
 of dimension $n-1$. The code on the left now formulates the cost function and its gradient
 on this Riemannian manifold in order to perform a Riemannian [Quasi Newton](https://en.wikipedia.org/wiki/Quasi-Newton_method) method.
 
 \bootstrapbox{Note}{
-    In <code class="plaintext">Manopt.jl</code> the example is written using the Riemannian gradient. In <code class="plaintext">Manopt</code> the Euclidean gradient, that is the gradient in the embedding of the sphere, is provided and internally converted via projection to the Riemannian one.
+  In `Manopt.jl` the example is written using the Riemannian gradient.
+  In `Manopt` the Euclidean gradient, that is the gradient in the embedding of the sphere, is provided and internally converted via projection to the Riemannian one.
 }
 
 {{newcolumn}}
