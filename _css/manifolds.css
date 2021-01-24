@@ -1,5 +1,5 @@
 .icon {
-    width: 1.25rem;
+    height: 1.5rem;
     margin-right:.5rem;
 }
 .page-foot {
@@ -15,7 +15,6 @@ div.alert > code {
 }
 
 div.tab-pane {
-    margin-top: -4px;
     border-color: #dee2e6;
     border:0px;
     border-top: 1px;
