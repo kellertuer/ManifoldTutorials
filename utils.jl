@@ -3,15 +3,21 @@ using Dates
 function hfun_tabbed(params)
     file_prefix = params[1]
     # (1) Text column and add markdown if it exists
-    html = """<div class="row">
-    <div class="col-sm">
-    """
+    html = """
+        <div class="row">
+          <div class="col-sm">
+        """
     md_file = string("_code/$(file_prefix).md")
     if isfile(md_file)
-        html = """$(html)\n$(Franklin.md2html(read(md_file, String); stripp=true))"""
+        html = """
+               $(html)
+               $(Franklin.fd2html(read(md_file, String); internal=true))
+               """
     end
-    html = """$(html)\n</div><!--end md column -->
-    """
+    html = """
+           $(html)
+           </div>  <!--end md column -->
+           """
     # (2) code tabs
     heads = ""
     tabs = ""
