@@ -10,6 +10,26 @@
 <script src="/libs/katex/katex.min.js"></script>
 <script src="/libs/katex/auto-render.min.js"></script>
 <script>renderMathInElement(document.body)</script>
-
+<script>
+$(document).ready(() => {
+    const stored_suffix = localStorage.getItem('ManifoldTutorials-code-language');
+    if (stored_suffix !== null) {
+        $(`.code-tab-${stored_suffix}`).click();
+        const my_item = $(`a[data-lang="${stored_suffix}"]`)
+        my_item.addClass('active');
+        $('#language-dropdown-button').text($(my_item).text());
+    }
+});
+$('a[data-lang]').each((_, element) => {
+    $(element).click(() => {
+            const suffix = $(element).data('lang');
+            localStorage.setItem('ManifoldTutorials-code-language', suffix);
+            $(`.code-tab-${suffix}`).click();
+        $('#language-dropdown>.active').removeClass('active');
+        $(element).addClass('active');
+        $('#language-dropdown-button').text($(element).text());
+    });
+})
+</script>
 </body>
 </html>
