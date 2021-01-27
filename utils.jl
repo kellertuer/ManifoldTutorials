@@ -51,19 +51,28 @@ end
 # A code tab if $file exists, print $logos and/or $text in tab title
 function code_column(file, logos=String[], text="", subfolder="")
     full_file = "_code/$subfolder$file"
-    ext = file[findlast(isequal('.'),file):end]
-    ext = ext[2:end] # remove dot
-    pre = file[1:findlast(isequal('.'),file)]
-    pre = pre[1:end-1]
+    subInd = findfirst(isequal('_'),file)
+    suffixInd = findlast(isequal('.'),file)
+    suffix = file[suffixInd+1:end]
+    ext = ""
+    pre = ""
+    if !isnothing(subInd) # sub version
+        ext = file[subInd+1:end]
+        ext = replace(replace(ext, "_" => "-"), "." => "-")
+        pre = file[1:subInd-1]
+    else
+        ext = file[findlast(isequal('.'),file)+1:end]
+        pre = file[1:suffixInd-1]
+    end
     code_type = ""
-    (lowercase(ext) == "jl") && (code_type="julia")
-    (lowercase(ext) == "py") && (code_type="python")
-    (lowercase(ext) == "m") && (code_type="matlab")
-    (lowercase(ext) == "c") && (code_type="c")
-    (lowercase(ext) == "cpp") && (code_type="cpp")
+    (lowercase(suffix) == "jl") && (code_type="julia")
+    (lowercase(suffix) == "py") && (code_type="python")
+    (lowercase(suffix) == "m") && (code_type="matlab")
+    (lowercase(suffix) == "c") && (code_type="c")
+    (lowercase(suffix) == "cpp") && (code_type="cpp")
     content = "";
     if isfile(full_file)
-        content = """<div class="tab-pane fade" id="$(pre)$(ext)" role="tabpanel">""" *
+        content = """<div class="tab-pane fade" id="$(pre)-$(ext)" role="tabpanel">""" *
                   fd2html("""
                          ```$(code_type)
                          $(read(full_file, String))
@@ -72,7 +81,7 @@ function code_column(file, logos=String[], text="", subfolder="")
                 "</div>"
         logos = string(["""<img class='icon' src='../assets/icons/$(logo).png' alt='$(logo)'/>""" for logo in logos]...)
         tab = """<li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#$(pre)$(ext)" aria-selected="false">
+            <a class="nav-link code-tab-$(ext)" data-toggle="tab" href="#$(pre)-$(ext)" aria-selected="false">
                 $(logos)$(text)
             </a>
             </li>
