@@ -2,6 +2,13 @@
     height: 1.5rem;
     margin-right:.5rem;
 }
+.dropdown-item .icon {
+    height: 1.125rem;
+    margin-right: .5rem;
+}
+#language-dropdown .dropdown-item.active {
+    background: #adadad;
+}
 .page-foot {
     text-align: center;
 }

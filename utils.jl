@@ -65,11 +65,29 @@ function code_column(file, logos=String[], text="", subfolder="")
         pre = file[1:suffixInd-1]
     end
     code_type = ""
-    (lowercase(suffix) == "jl") && (code_type="julia")
-    (lowercase(suffix) == "py") && (code_type="python")
-    (lowercase(suffix) == "m") && (code_type="matlab")
-    (lowercase(suffix) == "c") && (code_type="c")
-    (lowercase(suffix) == "cpp") && (code_type="cpp")
+    title = ""
+    if lowercase(suffix) == "jl"
+        code_type="julia"
+        title = "Julia"
+    end
+    if lowercase(suffix) == "py"
+        code_type="python"
+        title = "Python"
+        (startswith(lowercase(ext),"tf")) && (title = "$title & Tensorflow")
+        (startswith(lowercase(ext),"pt")) && (title = "$title & PyTorch")
+    end
+    if lowercase(suffix) == "m"
+        code_type="matlab"
+        title = "Matlab"
+    end
+    if lowercase(suffix) == "c"
+        code_type="c"
+        title = "C"
+    end
+    if lowercase(suffix) == "cpp"
+        code_type="cpp"
+        title = "C++"
+    end
     content = "";
     if isfile(full_file)
         content = """<div class="tab-pane fade" id="$(pre)-$(ext)" role="tabpanel">""" *
@@ -79,9 +97,9 @@ function code_column(file, logos=String[], text="", subfolder="")
                          ```
                          """, internal=true) *
                 "</div>"
-        logos = string(["""<img class='icon' src='../assets/icons/$(logo).png' alt='$(logo)'/>""" for logo in logos]...)
+        logos = string(["""<img class='icon' src='../assets/icons/$(logo).png'/>""" for logo in logos]...)
         tab = """<li class="nav-item">
-            <a class="nav-link code-tab-$(ext)" data-toggle="tab" href="#$(pre)-$(ext)" aria-selected="false">
+            <a class="nav-link code-tab-$(ext)" data-toggle="tab" href="#$(pre)-$(ext)" title="$title" aria-selected="false">
                 $(logos)$(text)
             </a>
             </li>
