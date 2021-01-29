@@ -97,7 +97,7 @@ function code_column(file, logos=String[], text="", subfolder="")
                          ```
                          """, internal=true) *
                 "</div>"
-        logos = string(["""<img class='icon' src='../assets/icons/$(logo).png'/>""" for logo in logos]...)
+        logos = string(["""<img class='icon' src="/assets/icons/$(logo).png"/>""" for logo in logos]...)
         tab = """<li class="nav-item">
             <a class="nav-link code-tab-$(ext)" data-toggle="tab" href="#$(pre)-$(ext)" title="$title" aria-selected="false">
                 $(logos)$(text)
