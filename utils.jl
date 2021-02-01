@@ -39,7 +39,10 @@ function hfun_tabbed(params)
         $(heads)
         </ul>
         <div class="tab-content" id="ManifoldConent$(file_prefix)">
-        $(tabs)
+            <div class="pt-3 text-center tab-pane fade active show" id="info-code-$(file_prefix)" role="tabpanel">
+                Select your favourite code tab above or choose a global preference in the menu.
+            </div>
+            $(tabs)
         </div>
         </div>
         </div><!-- end row -->
