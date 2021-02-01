@@ -40,7 +40,7 @@ function hfun_tabbed(params)
         </ul>
         <div class="tab-content" id="ManifoldConent$(file_prefix)">
             <div class="pt-3 text-center tab-pane fade active show" id="info-code-$(file_prefix)" role="tabpanel">
-                Select your favourite code tab above or choose a global preference in the menu.
+                Select your favourite code tab above or choose a global preference in the menu <i class="fa fa-language"/></i>.
             </div>
             $(tabs)
         </div>
